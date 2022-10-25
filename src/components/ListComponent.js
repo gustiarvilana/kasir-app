@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { Col, ListGroup, Row } from 'react-bootstrap'
+import { Col, ListGroup } from 'react-bootstrap'
 import { API_URL } from '../utils/constants'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils, faCoffee, faCheese } from '@fortawesome/free-solid-svg-icons'
@@ -40,7 +40,7 @@ export default class ListComponent extends Component {
             <Col md={3}>
                 <h2>List Categori</h2>
                 <hr />
-                <ListGroup style={{ cursor: "ponter" }}>
+                <ListGroup style={{ cursor: "pointer" }}>
                     {categories && categories.map((category) => (
                         <ListGroup.Item
                             key={category.id}

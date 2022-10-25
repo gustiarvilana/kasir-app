@@ -6,6 +6,7 @@ import React, { Component } from 'react'
 import { API_URL } from './utils/constants';
 import axios from 'axios';
 import MenuCard from './components/MenuCard';
+import swal from 'sweetalert';
 
 export default class App extends Component {
 
@@ -15,6 +16,7 @@ export default class App extends Component {
     this.state = {
       menus: [],
       categories_aktif: "Makanan",
+      product_click: [],
     }
   }
 
@@ -26,6 +28,70 @@ export default class App extends Component {
       })
       .catch((error) => {
         console.log(error);
+      })
+
+    axios.get(API_URL + "keranjangs")
+      .then(res => {
+        const keranjang = res.data;
+        this.setState({ keranjang });
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  addCart = (value) => {
+    // cek keranjang
+    axios.get(API_URL + "keranjangs?product.id=" + value.id)
+      .then(res => {
+        const menus = res.data;
+        if (menus.length !== 0) {
+          const keranjang = {
+            jumlah: menus[0].jumlah + 1,
+            total_harga: menus[0].total_harga + value.harga,
+            product: value,
+          }
+          axios.put(API_URL + "keranjangs/" + menus[0].id, keranjang)
+            .then(res => {
+              swal({
+                title: "Suskes",
+                text: "Produk sudah dimaksukan ke keranjang!",
+                icon: "success",
+                button: false,
+                timer: 1000,
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+        } else {
+          const keranjang = {
+            jumlah: 1,
+            total_harga: value.harga,
+            product: value,
+          }
+          axios.post(API_URL + "keranjangs", keranjang)
+            .then(res => {
+              swal({
+                title: "Suskes",
+                text: "Produk sudah dimaksukan ke keranjang!",
+                icon: "success",
+                button: false,
+                timer: 1000,
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+        }
+      })
+      .catch((error) => {
+        swal({
+          title: "Gagal",
+          text: "Error! =>" + error,
+          icon: "error",
+          button: 'Ok, Paham!',
+        });
       })
   }
 
@@ -61,6 +127,7 @@ export default class App extends Component {
                     <MenuCard
                       key={menu.id}
                       menu={menu}
+                      addCart={this.addCart}
                     />
                   ))}
                 </Row>
