@@ -185,8 +185,8 @@
   ],
   "keranjangs": [
     {
-      "jumlah": 2,
-      "total_harga": 32000,
+      "jumlah": 4,
+      "total_harga": 64000,
       "product": {
         "id": 1,
         "kode": "K-01",
@@ -200,6 +200,57 @@
         }
       },
       "id": 1
+    },
+    {
+      "jumlah": 1,
+      "total_harga": 14000,
+      "product": {
+        "id": 2,
+        "kode": "K-02",
+        "nama": "Nasi Goreng Telur",
+        "harga": 14000,
+        "is_ready": true,
+        "gambar": "nasi-goreng-telor.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
+        }
+      },
+      "id": 2
+    },
+    {
+      "jumlah": 1,
+      "total_harga": 12000,
+      "product": {
+        "id": 3,
+        "kode": "K-03",
+        "nama": "Nasi Rames",
+        "harga": 12000,
+        "is_ready": true,
+        "gambar": "nasi-rames.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
+        }
+      },
+      "id": 3
+    },
+    {
+      "jumlah": 2,
+      "total_harga": 26000,
+      "product": {
+        "id": 5,
+        "kode": "K-05",
+        "nama": "Mie Goreng",
+        "harga": 13000,
+        "is_ready": true,
+        "gambar": "mie-goreng.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
+        }
+      },
+      "id": 4
     }
   ],
   "pesanans": []

@@ -16,7 +16,7 @@ export default class App extends Component {
     this.state = {
       menus: [],
       categories_aktif: "Makanan",
-      product_click: [],
+      keranjangs: [],
     }
   }
 
@@ -32,12 +32,25 @@ export default class App extends Component {
 
     axios.get(API_URL + "keranjangs")
       .then(res => {
-        const keranjang = res.data;
-        this.setState({ keranjang });
+        const keranjangs = res.data;
+        this.setState({ keranjangs });
       })
       .catch((error) => {
         console.log(error);
       })
+  }
+
+  componentDidUpdate(prevState) {
+    if (prevState.keranjangs !== this.state.keranjangs) {
+      axios.get(API_URL + "keranjangs")
+        .then(res => {
+          const keranjangs = res.data;
+          this.setState({ keranjangs });
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    }
   }
 
   addCart = (value) => {
@@ -111,7 +124,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { menus, categories_aktif } = this.state;
+    const { menus, categories_aktif, keranjangs } = this.state;
     return (
       <div className="App">
         <NavbarComponent />
@@ -132,7 +145,9 @@ export default class App extends Component {
                   ))}
                 </Row>
               </Col>
-              <HasilComponent />
+              <HasilComponent
+                keranjangs={keranjangs}
+              />
             </Row>
           </Container>
         </div>

@@ -37,7 +37,7 @@ export default class ListComponent extends Component {
         const { categories } = this.state
         const { changeCategory, categories_aktif } = this.props
         return (
-            <Col md={3}>
+            <Col md={2}>
                 <h2>List Categori</h2>
                 <hr />
                 <ListGroup style={{ cursor: "pointer" }}>
