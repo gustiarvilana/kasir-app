@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { NavbarComponent } from "./components";
 import { Home, Sukses } from "./pages";
 
@@ -8,12 +8,12 @@ export default class App extends Component {
     return (
       <Router>
         <NavbarComponent />
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/sukses" element={<Sukses />} />
-          </Routes>
-        </div>
+        <main>
+          <Switch>
+            <Route path={"/"} component={Home} exact />
+            <Route path={"/sukses"} component={Sukses} exact />
+          </Switch>
+        </main>
       </Router>
     );
   }
