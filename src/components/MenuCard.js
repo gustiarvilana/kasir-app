@@ -4,7 +4,7 @@ import { numberWithCommas } from "../utils/util";
 
 const MenuCard = ({ menu, addCart }) => {
   return (
-    <Col md={4}>
+    <Col md={4} xs={6}>
       <Card className="mb-3 shadow" onClick={() => addCart(menu)}>
         <Card.Img
           height={150}

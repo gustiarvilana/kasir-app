@@ -34,13 +34,13 @@ class TotalBayar extends Component {
       <div className="fixed-bottom">
         <Row className="px-3">
           <Col md={{ span: 3, offset: 9 }}>
-            <h5>
+            <h4>
               TotalBayar:{" "}
               <strong style={{ float: "right" }}>
                 Rp. {numberWithCommas(total_bayar)}
               </strong>
-            </h5>
-            <div className="d-grid gap-2">
+            </h4>
+            <div className="d-grid gap-2 my-3">
               <Button
                 variant="dark"
                 size="lg"
